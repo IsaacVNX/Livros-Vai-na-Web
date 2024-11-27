@@ -1,5 +1,9 @@
-export default function LivrosDoados(){
-    return(
-        <h2>EU SOU O COMPONENTE LIVROS DOADOS</h2>
+import s from './livrosDoados.module.scss'
+
+export default function LivrosDoados() {
+    return (
+        <section>
+            <h2>Livros Doados</h2>
+        </section >
     )
 }
