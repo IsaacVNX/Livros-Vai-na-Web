@@ -23,3 +23,22 @@
     height: 10vh;
     font-size: 15px;
 }
+
+@media (max-width: 780px) {
+    .contatosFooter {
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        nav {
+            width: 60%;
+        }
+    }
+
+    .copyright {
+        p {
+            font-size: 12px;
+            text-align: center;
+            width: 60%;
+        }
+    }
+}
