@@ -14,14 +14,6 @@ export default function LivrosDoados() {
                         <p>Ficção</p>
                     </div>
                 </section>
-                <section>
-                    <img src={livroProtagonista} alt="Imagem do livro O Protagonista" />
-                    <div>
-                        <h3>O Protagonista</h3>
-                        <p>Susanne Andrade</p>
-                        <p>Ficção</p>
-                    </div>
-                </section>
             </section>
         </section >
     )
