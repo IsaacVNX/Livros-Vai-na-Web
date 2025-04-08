@@ -1,22 +1,55 @@
 import s from './queroDoar.module.scss'
 import iconeLivroAberto from '../../assets/iconeLivroAberto.png'
+import { useState } from 'react'
+import axios from 'axios'
 
 export default function QueroDoar() {
+
+    const [titulo,setTitulo] = useState("")
+    const [categoria,setCategoria] = useState("")
+    const [autor,setAutor] = useState("")
+    const [image_url,setImage_url] = useState("")
+
+    const capturaTitulo = (e) =>{
+        setTitulo(e.target.value)
+    }
+
+    const capturaCategoria = (e) =>{
+        setCategoria(e.target.value)
+    }
+
+    const capturaAutor = (e) =>{
+        setAutor(e.target.value)
+    }
+
+    const capturaImg = (e) =>{
+        setImage_url(e.target.value)
+    }
+
+    const envioDados = async() =>{
+
+        const dadosParaEnviar = {
+            titulo,
+            categoria,
+            autor,
+            image_url
+        }
+        await axios.post("https://api-livros-vai-na-web-gehe.onrender.com/doar",dadosParaEnviar)
+    }
     return (
         <section className={s.queroDoarSection}>
             <p>Por favor, preencha o formulário com suas informações e as informações do Livro</p>
-            <form action="">
+            <form onSubmit={(e)=>e.preventDefault()}>
                 <div>
                     <img src={iconeLivroAberto} alt="imagem minimalista de livro aberto" />
-                    <p>Informações do Livro</p>
+                    <h2>Informações do Livro</h2>
                 </div>
-                <input type="text" name="" id="" placeholder='Titulo' />
-                <input type="text" name="" id="" placeholder='Categoria' />
-                <input type="text" name="" id="" placeholder='Autor' />
-                <input type="text" name="" id="" placeholder='Link da Imagem' />
-                <input type="submit" value="Doar" className={s.button}/>
+                <input type="text" placeholder='Título' onChange={capturaTitulo} required />
+                <input type="text" placeholder='Categoria' onChange={capturaCategoria} required /> 
+                <input type="text" placeholder='Autor' onChange={capturaAutor} required />
+                <input type="url" placeholder='Link da Imagem' onChange={capturaImg} required />
+                <input type="submit" value="Doar" className={s.buttonDoar} onClick={envioDados}/>
             </form>
         </section>
-
-    )
+        )
 }
